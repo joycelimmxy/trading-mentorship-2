@@ -1006,7 +1006,7 @@ footer .dis{font-size:11px;color:#5D6472;margin-top:14px;line-height:1.7;max-wid
   // 换 WhatsApp 号码只改这一行,下面所有按钮链接会自动同步
   var WA='60177679141';
   // 填好 Apps Script 部署后的 Web App URL(见部署说明),否则表单数据不会记录到 Sheet
-  var SHEET_ENDPOINT='PASTE_PARTNER_SHEET_URL';
+  var SHEET_ENDPOINT='https://script.google.com/macros/s/AKfycbyMsNZjhIpNbhpCzV4c5Vj1WTW3RQemYqzHkGk15z-58_Buy6-lNW3DRa5Cq8jRkXaxJg/exec';
   var modal=document.getElementById('waModal');
   var form=document.getElementById('waForm');
   var WA_TEXT=encodeURIComponent('你好,我要开始陪跑计划📊');
@@ -1080,7 +1080,7 @@ footer .dis{font-size:11px;color:#5D6472;margin-top:14px;line-height:1.7;max-wid
   });
 
   /* ---------- Telegram 体验卡 modal(独立表单,独立 Sheet,不发 WhatsApp) ---------- */
-  var TG_SHEET_ENDPOINT='PASTE_PARTNER_TG_SHEET_URL';
+  var TG_SHEET_ENDPOINT='https://script.google.com/macros/s/AKfycbyMsNZjhIpNbhpCzV4c5Vj1WTW3RQemYqzHkGk15z-58_Buy6-lNW3DRa5Cq8jRkXaxJg/exec';
   var TELEGRAM_LINK='https://t.me/+8Fe7XRwc9tA2ZThl';
   var tgModal=document.getElementById('tgModal');
   var tgForm=document.getElementById('tgForm');
@@ -1099,7 +1099,7 @@ footer .dis{font-size:11px;color:#5D6472;margin-top:14px;line-height:1.7;max-wid
   function sendTgToSheet(data,status,useBeacon){
     if(TG_SHEET_ENDPOINT.indexOf('PASTE_')===0)return;
     data.time=new Date().toISOString();
-    data.状态=status;
+    data.状态='Telegram体验卡 · '+status;
     var body=JSON.stringify(data);
     if(useBeacon&&navigator.sendBeacon){
       navigator.sendBeacon(TG_SHEET_ENDPOINT,body);
